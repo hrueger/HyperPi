@@ -47,14 +47,6 @@ server.onClipsClear = cmd => {
     console.log('CLIP CLEAR', cmd)
     return Promise.resolve();
 };
-server.onStop = (cmd) => {
-    
-
-    return new Promise((resolve) => {
-        resolve();
-    });
-
-}
 server.onJog = (cmd) => {
     
 
