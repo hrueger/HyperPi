@@ -36,6 +36,7 @@ server.onPlay = (cmd) => {
     return Promise.resolve();
 }
 server.onStop = (cmd) => {
+    player.quit();
     console.log('stopped', cmd);
     status = TransportStatus.STOPPED;
     return Promise.resolve();
