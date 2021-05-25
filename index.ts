@@ -1,6 +1,7 @@
 import { HyperdeckServer } from "hyperdeck-server-connection";
 import { SlotStatus, TransportStatus, VideoFormat } from "hyperdeck-server-connection/dist/types";
 import * as fs from "fs";
+import * as path from "path";
 import * as OMX from "node-omxplayer";
 
 const server = new HyperdeckServer();
@@ -30,7 +31,7 @@ loadClips();
 } */
 server.onPlay = (cmd) => {
     console.log('playing', cmd);
-    playerPlay(clipFolder + clips[clipID-1].name);
+    playerPlay(path.join(clipFolder, clips[clipID-1].name));
     status = TransportStatus.PLAY;
     return Promise.resolve();
 }
