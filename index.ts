@@ -1,6 +1,7 @@
 import { HyperdeckServer } from "hyperdeck-server-connection";
 import { SlotStatus, TransportStatus, VideoFormat } from "hyperdeck-server-connection/dist/types";
 import * as fs from "fs";
+import * as OMX from "node-omxplayer";
 
 const server = new HyperdeckServer();
 let status;
@@ -13,6 +14,7 @@ const clipFolder = "clips";
 var timecode ="0:27:00:02";
 var displayTimecode = "0:27:00:02";
 var loop = 'false';
+var player: NodeOmxPlayer;
 loadClips();
 
 /* server.onDeviceInfo = (cmd) => {
@@ -28,6 +30,7 @@ loadClips();
 } */
 server.onPlay = (cmd) => {
     console.log('playing', cmd);
+    playerPlay(clipFolder + clips[clipID-1].name);
     status = TransportStatus.PLAY;
     return Promise.resolve();
 }
@@ -153,4 +156,8 @@ function loadClips(){
 
 function updateTC(){
     // console.log("update tc");
+}
+
+function playerPlay(clip: string) {
+    player = OMX(clip);
 }
