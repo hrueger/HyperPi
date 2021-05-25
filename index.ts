@@ -36,7 +36,7 @@ server.onPlay = (cmd) => {
     return Promise.resolve();
 }
 server.onStop = (cmd) => {
-    player.quit();
+    player.pause();
     console.log('stopped', cmd);
     status = TransportStatus.STOPPED;
     return Promise.resolve();
@@ -91,8 +91,8 @@ server.onTransportInfo = cmd => {
         'status': status,
         'speed' : `${speed}`,
         'slot id': `${1}`,
-        'display timecode': displayTimecode,
-        'timecode': timecode,
+        'display timecode': player?.timeStamp.toString() || "unknown",
+        'timecode': player?.timeStamp.toString() || "unknown",
         'single clip': "true",
         'clip id' : `${clipID}`,
         'video format': videoFormat,
