@@ -1,0 +1,22 @@
+{
+  "name": "hyperpi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "dev": "ts-node-dev index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "death": "^1.1.0",
+    "hyperdeck-server-connection": "0.0.3",
+    "tslib": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.6.0",
+    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.1.6"
+  }
+}

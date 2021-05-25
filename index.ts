@@ -1,11 +1,10 @@
 import { HyperdeckServer } from "hyperdeck-server-connection";
 import { SlotStatus, TransportStatus, VideoFormat } from "hyperdeck-server-connection/dist/types";
 import * as fs from "fs";
-import * as FfmpegCommand from 'fluent-ffmpeg';
 
 const server = new HyperdeckServer();
 let status;
-var videoFormat = '1080p30';
+var videoFormat = VideoFormat.PAL;
 const clips = []
 var speed = 100;
 var slotID = 1;
@@ -93,13 +92,14 @@ server.onClipsGet = (cmd) => {
 server.onTransportInfo = cmd => {
     let res = {
         'status': status,
-        'speed' : speed,
+        'speed' : `${speed}`,
         'slot id': `${1}`,
         'display timecode': displayTimecode,
         'timecode': timecode,
-        'clip id' : clipID,
+        'single clip': "true",
+        'clip id' : `${clipID}`,
         'video format': videoFormat,
-        'loop' : loop
+        'loop' : "false" as any,
     };
     updateTC();
     return Promise.resolve(res)
